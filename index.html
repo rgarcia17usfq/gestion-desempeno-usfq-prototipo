@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>USFQ | Gestión del Desempeño - Prototipo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><button id="menuBtn" class="icon-btn" aria-label="Abrir menú">☰</button><span>Gestión del Desempeño</span></div>
+    <div class="top-user">Bienvenido, <strong>Ricardo García Ortiz</strong><span class="avatar">RG</span><button class="logout">Salir</button></div>
+  </header>
+
+  <div class="identity-strip">
+    <div><strong>Usuario:</strong> Ricardo García Ortiz</div>
+    <div><strong>Email:</strong> rgarcia@usfq.edu.ec</div>
+  </div>
+
+  <nav class="mainnav">
+    <button class="nav-link active" data-page="dashboard">Inicio</button>
+    <button class="nav-link" data-page="profile">Mi perfil</button>
+    <button class="nav-link" data-page="kpis">Objetivos y KPIs</button>
+    <button class="nav-link" data-page="sessions">Sesiones</button>
+    <button class="nav-link" data-page="evaluation">Evaluaciones</button>
+    <button class="nav-link role-jefe" data-page="team">Mi equipo</button>
+    <button class="nav-link role-admin" data-page="admin">Administración</button>
+    <button class="nav-link role-comite" data-page="committee">Comité de Talento</button>
+  </nav>
+
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-title">Vista de demostración</div>
+      <label class="field-label" for="roleSelect">Simular rol</label>
+      <select id="roleSelect" class="control">
+        <option value="colaborador">Colaborador</option>
+        <option value="jefe" selected>Jefe / Evaluador</option>
+        <option value="admin">RRHH / Administrador</option>
+        <option value="comite">Comité de Talento</option>
+      </select>
+      <div class="divider"></div>
+      <div class="sidebar-note">
+        <strong>Prototipo funcional V0.1</strong>
+        <p>Los datos son ficticios. Las acciones se guardan localmente en este navegador.</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="dashboard" class="page active-page">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Ciclo 2027</p>
+            <h1>Hola, Ricardo</h1>
+            <p class="lead">Tu gestión del desempeño en un solo lugar. Revisa qué sigue y completa tus actividades pendientes.</p>
+          </div>
+          <span class="status-pill success">Ciclo activo</span>
+        </div>
+
+        <div class="cycle-card panel">
+          <div class="panel-heading">
+            <div><h2>Mi ciclo de desempeño</h2><p>Enero - Julio 2027</p></div>
+            <div class="progress-summary"><strong>42%</strong><span>avance</span></div>
+          </div>
+          <div class="timeline" aria-label="Avance del ciclo">
+            <div class="step done"><div class="step-dot">✓</div><div><strong>Sesión de arranque</strong><span>Completado</span></div></div>
+            <div class="step done"><div class="step-dot">✓</div><div><strong>Check-in 1</strong><span>Completado</span></div></div>
+            <div class="step current"><div class="step-dot">3</div><div><strong>Evaluación S1</strong><span>En curso</span></div></div>
+            <div class="step"><div class="step-dot">4</div><div><strong>Check-in 2</strong><span>Pendiente</span></div></div>
+            <div class="step"><div class="step-dot">5</div><div><strong>Evaluación S2</strong><span>Pendiente</span></div></div>
+            <div class="step"><div class="step-dot">6</div><div><strong>Comité</strong><span>Pendiente</span></div></div>
+          </div>
+        </div>
+
+        <div class="cards-grid three">
+          <article class="metric-card">
+            <div class="metric-icon">▣</div>
+            <div><span class="metric-label">Próxima actividad</span><h3>Evaluación S1</h3><p>Completa tu autoevaluación antes del 15 de abril.</p><button class="text-action" data-page="evaluation">Continuar →</button></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon">◎</div>
+            <div><span class="metric-label">Objetivos / KPIs</span><h3>2 objetivos</h3><p>Avance promedio: <strong>68%</strong></p><button class="text-action" data-page="kpis">Ver objetivos →</button></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon">✓</div>
+            <div><span class="metric-label">Evaluaciones</span><h3>1 pendiente</h3><p>Autoevaluación S1 en progreso.</p><button class="text-action" data-page="evaluation">Ir a evaluaciones →</button></div>
+          </article>
+        </div>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Mis objetivos</h2><p>Avance registrado en el último check-in.</p></div><button class="btn secondary" data-page="kpis">Ver todos</button></div>
+            <div class="goal-row"><div class="goal-top"><strong>Reducir tiempo de respuesta de solicitudes</strong><span>72%</span></div><div class="progress"><div style="width:72%"></div></div><small>Meta: 24 horas · Línea base: 48 horas</small></div>
+            <div class="goal-row"><div class="goal-top"><strong>Digitalizar expedientes administrativos</strong><span>64%</span></div><div class="progress"><div style="width:64%"></div></div><small>Meta: 100% · Línea base: 35%</small></div>
+          </section>
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Últimos acuerdos</h2><p>Check-in 1 · 12 marzo 2027</p></div><span class="status-pill neutral">Acta registrada</span></div>
+            <ul class="clean-list">
+              <li>Priorizar automatización de solicitudes repetitivas.</li>
+              <li>Revisar avance de digitalización el 31 de marzo.</li>
+              <li>Jefatura apoyará con acceso a datos históricos.</li>
+            </ul>
+            <button class="btn ghost" data-page="sessions">Ver bitácora</button>
+          </section>
+        </div>
+      </section>
+
+      <section id="profile" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Perfil de desempeño</p><h1>Mi perfil</h1><p class="lead">Información de cargo, funciones y competencias utilizadas como contexto para el ciclo.</p></div></div>
+        <div class="profile-grid">
+          <section class="panel profile-summary">
+            <div class="profile-avatar">RG</div>
+            <h2>Ricardo García Ortiz</h2><p>Coordinador de Procesos y Automatización</p>
+            <dl><div><dt>Área</dt><dd>Mejoramiento Continuo</dd></div><div><dt>Jefe directo</dt><dd>María Andrade</dd></div><div><dt>Tipo de personal</dt><dd>Administrativo</dd></div><div><dt>Evaluación de servicio</dt><dd><span class="status-pill warning">No aplica</span></dd></div></dl>
+          </section>
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Funciones principales</h2><p>Referencia del perfil de cargo.</p></div></div>
+            <ol class="numbered-list"><li>Coordinar iniciativas de mejora continua y automatización.</li><li>Levantar, analizar y rediseñar procesos institucionales.</li><li>Coordinar requerimientos funcionales con equipos de TI.</li><li>Dar seguimiento a proyectos y métricas de mejora.</li></ol>
+            <div class="info-callout"><strong>Nota:</strong> si el perfil de cargo no existe, el sistema debe mostrar una alerta y permitir la gestión de la excepción desde Administración.</div>
+          </section>
+        </div>
+      </section>
+
+      <section id="kpis" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Objetivos y KPIs</p><h1>Mis objetivos</h1><p class="lead">Consulta la meta, línea base, indicador y avance acordados para el período.</p></div><button class="btn primary" id="addKpiBtn">+ Agregar objetivo</button></div>
+        <div id="kpiList" class="stack"></div>
+      </section>
+
+      <section id="sessions" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Conversaciones de desempeño</p><h1>Sesiones y check-ins</h1><p class="lead">Cada conversación deja evidencia, acuerdos y próximos pasos.</p></div><button class="btn primary" id="newSessionBtn">Registrar reunión</button></div>
+        <div class="panel table-panel">
+          <table><thead><tr><th>Fecha</th><th>Tipo</th><th>Participantes</th><th>Resumen</th><th>Estado</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>15/01/2027</td><td>Sesión de arranque</td><td>Ricardo / María</td><td>Perfil, fortalezas y KPIs.</td><td><span class="status-pill success">Completada</span></td><td><button class="link-btn">Ver acta</button></td></tr>
+            <tr><td>12/03/2027</td><td>Check-in 1</td><td>Ricardo / María</td><td>Avances, obstáculos y ajustes.</td><td><span class="status-pill success">Completada</span></td><td><button class="link-btn">Ver acta</button></td></tr>
+            <tr><td>20/05/2027</td><td>Check-in 2</td><td>Ricardo / María</td><td>-</td><td><span class="status-pill neutral">Pendiente</span></td><td><button class="link-btn" id="registerCheckin">Registrar</button></td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section id="evaluation" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Evaluación formal</p><h1>Autoevaluación S1</h1><p class="lead">Responde con evidencia y utiliza la rúbrica para mantener criterios consistentes.</p></div><span id="evalStatus" class="status-pill warning">En progreso</span></div>
+        <div class="eval-layout">
+          <aside class="panel eval-summary">
+            <h3>Progreso</h3><div class="big-progress"><strong id="evalPercent">0%</strong><span id="evalCounter">0 de 4 preguntas</span></div><div class="progress"><div id="evalBar" style="width:0%"></div></div>
+            <div class="divider"></div><p class="small-muted">El puntaje 5 debe reservarse para un desempeño excepcional, sostenido y claramente superior a lo esperado.</p>
+            <button id="saveEval" class="btn secondary full">Guardar borrador</button><button id="submitEval" class="btn primary full">Enviar evaluación</button>
+          </aside>
+          <div id="questionList" class="stack"></div>
+        </div>
+      </section>
+
+      <section id="team" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Rol: Jefe / Evaluador</p><h1>Mi equipo</h1><p class="lead">Visualiza rápidamente quién requiere atención y continúa el proceso desde una sola pantalla.</p></div></div>
+        <div class="cards-grid four mini-metrics"><article><span>4</span><p>Colaboradores</p></article><article><span>75%</span><p>Arranques completados</p></article><article><span>2</span><p>Evaluaciones pendientes</p></article><article><span>1</span><p>Alertas</p></article></div>
+        <div class="panel table-panel">
+          <div class="table-toolbar"><input class="control" placeholder="Buscar colaborador..."/><select class="control"><option>Todos los estados</option><option>Pendiente</option><option>En curso</option><option>Completado</option></select></div>
+          <table><thead><tr><th>Colaborador</th><th>Cargo</th><th>Progreso</th><th>Próxima acción</th><th>Estado</th><th></th></tr></thead><tbody>
+            <tr><td><strong>Ana Torres</strong><small>Administrativo</small></td><td>Analista de Procesos</td><td><div class="progress compact"><div style="width:65%"></div></div><small>65%</small></td><td>Evaluar S1</td><td><span class="status-pill warning">Requiere acción</span></td><td><button class="btn small primary" data-page="evaluation">Evaluar</button></td></tr>
+            <tr><td><strong>Diego Vega</strong><small>Administrativo</small></td><td>Analista de Datos</td><td><div class="progress compact"><div style="width:50%"></div></div><small>50%</small></td><td>Check-in 1</td><td><span class="status-pill neutral">Pendiente</span></td><td><button class="btn small secondary" data-page="sessions">Registrar</button></td></tr>
+            <tr><td><strong>Carolina Paz</strong><small>Administrativo</small></td><td>Asistente de Proyecto</td><td><div class="progress compact"><div style="width:82%"></div></div><small>82%</small></td><td>Esperar cierre S1</td><td><span class="status-pill success">Al día</span></td><td><button class="btn small ghost">Ver</button></td></tr>
+            <tr><td><strong>Miguel León</strong><small>Administrativo</small></td><td>Coordinador de Datos</td><td><div class="progress compact"><div style="width:38%"></div></div><small>38%</small></td><td>Definir KPI</td><td><span class="status-pill danger">Alerta</span></td><td><button class="btn small ghost" data-page="kpis">Gestionar</button></td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section id="admin" class="page">
+        <div class="page-heading"><div><p class="eyebrow">RRHH / Administración funcional</p><h1>Configuración del ciclo</h1><p class="lead">Administra reglas, estructura y excepciones antes de habilitar la campaña.</p></div><button class="btn primary" id="validateMatrix">Validar matriz</button></div>
+        <div class="admin-tabs"><button class="tab active" data-admin-tab="matrix">Matriz de evaluaciones</button><button class="tab" data-admin-tab="exceptions">Excepciones de estructura</button><button class="tab" data-admin-tab="settings">Configuración</button></div>
+        <div id="matrix" class="admin-pane active panel table-panel">
+          <div class="panel-heading"><div><h2>Matriz definitiva de evaluaciones</h2><p>Resultado de la estructura oficial + excepciones configuradas.</p></div><span class="status-pill warning">2 observaciones</span></div>
+          <table><thead><tr><th>Evaluado</th><th>Jefe evaluador</th><th>Autoevaluación</th><th>Subordinados</th><th>Servicio</th><th>Validación</th></tr></thead><tbody>
+            <tr><td>Ana Torres</td><td>Ricardo García</td><td>✓</td><td>0</td><td><label class="switch"><input type="checkbox"><span></span></label></td><td><span class="status-pill success">Correcto</span></td></tr>
+            <tr><td>Diego Vega</td><td>Ricardo García</td><td>✓</td><td>0</td><td><label class="switch"><input type="checkbox" checked><span></span></label></td><td><span class="status-pill success">Correcto</span></td></tr>
+            <tr><td>Carolina Paz</td><td>Ricardo García</td><td>✓</td><td>0</td><td><label class="switch"><input type="checkbox"><span></span></label></td><td><span class="status-pill warning">Sin perfil cargo</span></td></tr>
+            <tr><td>Miguel León</td><td>-</td><td>✓</td><td>3</td><td><label class="switch"><input type="checkbox"><span></span></label></td><td><span class="status-pill danger">Sin evaluador</span></td></tr>
+          </tbody></table>
+        </div>
+        <div id="exceptions" class="admin-pane panel table-panel">
+          <div class="panel-heading"><div><h2>Excepciones de estructura</h2><p>Modifica la relación de evaluación sin alterar la estructura organizacional oficial.</p></div><button class="btn primary" id="addExceptionBtn">+ Nueva excepción</button></div>
+          <table><thead><tr><th>Persona</th><th>Relación oficial</th><th>Relación para evaluación</th><th>Motivo</th><th>Vigencia</th><th></th></tr></thead><tbody id="exceptionRows">
+            <tr><td>Valeria Ruiz</td><td>Jorge Lara</td><td>María Andrade</td><td>Asignación temporal de proyecto</td><td>S1 2027</td><td><button class="link-btn">Editar</button></td></tr>
+          </tbody></table>
+        </div>
+        <div id="settings" class="admin-pane panel">
+          <div class="settings-grid"><label>Nombre del ciclo<input class="control" value="Piloto Gestión del Desempeño 2027"/></label><label>Periodo<select class="control"><option>S1 2027</option><option>S2 2027</option></select></label><label>Autoevaluación (%)<input class="control" type="number" value="10"/></label><label>Jefe (%)<input class="control" type="number" value="60"/></label><label>Subordinados (%)<input class="control" type="number" value="30"/></label><label>Servicio (%)<input class="control" type="number" value="0"/></label></div>
+          <div class="info-callout">Las ponderaciones son configurables y deben validarse para sumar 100% según el tipo de población.</div>
+          <button class="btn primary">Guardar configuración</button>
+        </div>
+      </section>
+
+      <section id="committee" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Comité de Talento</p><h1>Resultados consolidados</h1><p class="lead">Analiza resultados y registra decisiones o planes de acción por persona.</p></div></div>
+        <div class="cards-grid four mini-metrics"><article><span>87.4%</span><p>Promedio general</p></article><article><span>12</span><p>≥ 92%</p></article><article><span>34</span><p>81% - 91%</p></article><article><span>5</span><p>&lt; 81%</p></article></div>
+        <div class="panel table-panel"><table><thead><tr><th>Persona</th><th>Área</th><th>Resultado</th><th>Clasificación</th><th>Plan comité</th><th></th></tr></thead><tbody>
+          <tr><td>Ana Torres</td><td>Mejoramiento Continuo</td><td><strong>95%</strong></td><td><span class="status-pill success">Óptimo</span></td><td>Pendiente</td><td><button class="btn small primary openAction">Registrar acción</button></td></tr>
+          <tr><td>Diego Vega</td><td>Mejoramiento Continuo</td><td><strong>88%</strong></td><td><span class="status-pill warning">Buen desempeño</span></td><td>En seguimiento</td><td><button class="btn small secondary openAction">Editar</button></td></tr>
+          <tr><td>Carolina Paz</td><td>Proyectos</td><td><strong>78%</strong></td><td><span class="status-pill danger">Bajo desempeño</span></td><td>Pendiente</td><td><button class="btn small primary openAction">Registrar acción</button></td></tr>
+        </tbody></table></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal" aria-hidden="true"><div class="modal-card"><div class="modal-header"><h2 id="modalTitle">Registrar</h2><button id="closeModal" class="icon-btn">×</button></div><div id="modalBody"></div></div></div>
+  <div id="toast" class="toast">Cambios guardados</div>
+  <script src="app.js"></script>
+</body>
+</html>
