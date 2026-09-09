@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>USFQ | Gestión del Desempeño - Prototipo V0.7.0</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <button id="menuBtn" class="icon-btn" aria-label="Abrir menú">☰</button>
+      <span class="brand-app">Gestión del Desempeño</span>
+    </div>
+    <div class="top-user">
+      <button id="notificationBtn" class="notification-btn" aria-label="Notificaciones">
+        <span class="bell">♢</span><span id="notificationCount" class="notification-count">3</span>
+      </button>
+      <span>Bienvenido, <strong id="topUserName">Ricardo García Ortiz</strong></span>
+      <span class="avatar" id="topAvatar">RG</span>
+      <button class="logout">Salir</button>
+    </div>
+    <div id="notificationPanel" class="notification-panel" aria-hidden="true">
+      <div class="notification-header"><strong>Notificaciones</strong><button id="markReadBtn" class="link-btn">Marcar leídas</button></div>
+      <div id="notificationList"></div>
+    </div>
+  </header>
+
+  <div class="identity-strip">
+    <div><strong>Usuario:</strong> <span id="identityName">Ricardo García Ortiz</span></div>
+    <div><strong>Rol demo:</strong> <span id="identityRole">Jefe / Evaluador</span></div>
+    <div><strong>Ciclo:</strong> <span id="identityCycle">Piloto 2027</span></div>
+    <div><strong>Etapa demo:</strong> <span id="identityStage">Evaluación 1</span></div>
+  </div>
+
+  <nav class="mainnav">
+    <button class="nav-link active" data-page="dashboard">Inicio</button>
+    <button class="nav-link role-person" data-page="profile">Mi perfil</button>
+    <button class="nav-link role-person" data-page="kpis">Objetivos y KPIs</button>
+    <button class="nav-link role-person" data-page="sessions">Sesiones</button>
+    <button class="nav-link role-person" data-page="evaluations">Evaluaciones</button>
+    <button class="nav-link role-person" data-page="results">Resultados</button>
+    <button class="nav-link role-jefe" data-page="team">Mi equipo</button>
+    <button class="nav-link role-admin" data-page="admin">Administración</button>
+    <button class="nav-link role-comite" data-page="committee">Comité de Talento</button>
+  </nav>
+
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar collapsed" aria-hidden="true">
+      <div class="sidebar-title">Vista de demostración</div>
+      <label class="field-label" for="roleSelect">Simular rol</label>
+      <select id="roleSelect" class="control">
+        <option value="colaborador">Colaborador</option>
+        <option value="jefe" selected>Jefe / Evaluador</option>
+        <option value="decano">Decano / Evaluador</option>
+        <option value="admin">RRHH / Administrador</option>
+        <option value="comite">Comité de Talento</option>
+      </select>
+      <label class="field-label top-gap" for="cycleSelect">Escenario del ciclo</label>
+      <select id="cycleSelect" class="control">
+        <option value="annual">Ciclo anual 2027-2028</option>
+        <option value="pilot" selected>Piloto enero-julio 2027</option>
+      </select>
+      <label class="field-label top-gap" for="stageSelect">Simular etapa del proceso</label>
+      <select id="stageSelect" class="control">
+        <option value="start">1. Sesión de inicio</option>
+        <option value="check1">2. Reunión de feedback 1</option>
+        <option value="eval1" selected>3. Evaluación 1</option>
+        <option value="check2">4. Reunión de feedback 2</option>
+        <option value="eval2">5. Evaluación 2 y cierre</option>
+      </select>
+      <button id="processGuideBtn" class="btn secondary full">Ver flujo completo (TI)</button>
+      <div class="divider"></div>
+      <div class="sidebar-note">
+        <strong>Prototipo funcional V0.7.0</strong>
+        <p>Datos ficticios. Las acciones se guardan localmente en este navegador para simular estados del proceso.</p>
+      </div>
+      <button id="resetDemo" class="btn ghost full">Restablecer demo</button>
+    </aside>
+    <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+    <main class="content">
+      <section id="dashboard" class="page active-page">
+        <div id="dashboardContent"></div>
+      </section>
+
+      <section id="profile" class="page">
+        <div class="page-heading">
+          <div><p class="eyebrow">Perfil de desempeño</p><h1>Mi perfil</h1><p class="lead">Información de cargo y funciones que sirve de contexto para la sesión de inicio y las evaluaciones.</p></div>
+        </div>
+        <div class="profile-grid">
+          <section class="panel profile-summary">
+            <div class="profile-avatar">RG</div>
+            <h2>Ricardo García Ortiz</h2><p>Coordinador de Procesos y Automatización</p>
+            <dl><div><dt>Área</dt><dd>Mejoramiento Continuo</dd></div><div><dt>Jefe directo</dt><dd>María Andrade</dd></div><div><dt>Tipo de personal</dt><dd>Administrativo</dd></div><div><dt>Evaluación de servicio</dt><dd><span class="status-pill neutral">No aplica</span></dd></div></dl>
+          </section>
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Funciones principales</h2><p>Información referencial del perfil de cargo.</p></div><span class="status-pill success">Perfil disponible</span></div>
+            <ol class="numbered-list"><li>Coordinar iniciativas de mejora continua y automatización.</li><li>Levantar, analizar y rediseñar procesos institucionales.</li><li>Coordinar requerimientos funcionales con equipos de TI.</li><li>Dar seguimiento a proyectos y métricas de mejora.</li></ol>
+            <div class="info-callout"><strong>¿Necesitas actualizar tus funciones?</strong> Contacta a tu Generalista de RR. HH. para solicitar la revisión del perfil de cargo.</div>
+          </section>
+        </div>
+      </section>
+
+      <section id="kpis" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Objetivos y KPIs</p><h1>Mis objetivos</h1><p class="lead">Los objetivos se construyen conjuntamente durante la sesión de inicio y se revisan en cada reunión de feedback.</p></div><button class="btn primary role-jefe-inline" id="addKpiBtn">+ Agregar objetivo</button></div>
+        <div class="info-callout"><strong>Seguimiento de objetivos:</strong> consulta el indicador, la línea base, la meta y el avance registrado en las conversaciones de desempeño.</div>
+        <div id="kpiList" class="stack"></div>
+      </section>
+
+      <section id="sessions" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Conversaciones de desempeño</p><h1>Sesiones y actas</h1><p class="lead">Consulta el histórico de conversaciones y abre cada acta para revisar lo acordado.</p></div><button class="btn primary role-jefe-inline" id="newSessionBtn">Registrar reunión</button></div>
+        <div class="session-legend"><span><i class="dot red"></i> Sesión de inicio: perfil, objetivos/KPIs, acuerdos y próximos pasos</span><span><i class="dot gray"></i> Reunión de feedback: contexto, obstáculos y acuerdos / próximos pasos</span></div>
+        <div id="teamSessionActions"></div>
+        <div class="panel table-panel">
+          <table><thead><tr><th>Fecha</th><th>Tipo</th><th>Participantes</th><th>Resumen</th><th>Estado</th><th>Acta</th></tr></thead><tbody id="sessionRows"></tbody></table>
+        </div>
+      </section>
+
+      <section id="evaluations" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Evaluación</p><h1>Evaluaciones</h1><p class="lead">Completa únicamente las evaluaciones que te corresponden. El sistema habilita cada paso según el avance del proceso.</p></div></div>
+        <div id="evaluationHub"></div>
+      </section>
+
+      <section id="evaluationForm" class="page">
+        <div class="page-heading"><div><p class="eyebrow" id="evalEyebrow">Evaluación</p><h1 id="evalTitle">Autoevaluación</h1><p class="lead" id="evalLead">Completa la evaluación utilizando los criterios definidos.</p></div><span id="evalStatus" class="status-pill warning">En progreso</span></div>
+        <div class="eval-layout">
+          <aside class="panel eval-summary">
+            <button class="link-btn back-link" data-page="evaluations">← Volver a evaluaciones</button>
+            <h3>Progreso</h3><div class="big-progress"><strong id="evalPercent">0%</strong><span id="evalCounter">0 preguntas</span></div><div class="progress"><div id="evalBar" style="width:0%"></div></div>
+            <div class="divider"></div><p class="small-muted" id="evalHelper"></p>
+            <button id="saveEval" class="btn secondary full">Guardar borrador</button><button id="submitEval" class="btn primary full">Enviar evaluación</button>
+          </aside>
+          <div id="questionList" class="stack"></div>
+        </div>
+      </section>
+
+      <section id="results" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Resultados de desempeño</p><h1>Resultados de desempeño</h1><p class="lead">Consulta tus calificaciones generales del piloto. Esta vista se mantendrá simple durante el lanzamiento inicial.</p></div></div>
+        <div id="resultsContent"></div>
+      </section>
+
+      <section id="team" class="page">
+        <div class="page-heading"><div><p class="eyebrow">Rol: Jefe / Evaluador</p><h1>Mi equipo</h1><p class="lead">Consulta las calificaciones de tus colaboradores y revisa de forma resumida los resultados de cada ciclo.</p></div></div>
+        <div id="teamResultsDashboard"></div>
+      </section>
+
+      <section id="teamMember" class="page">
+        <div id="teamMemberContent"></div>
+      </section>
+
+      <section id="admin" class="page">
+        <div class="page-heading"><div><p class="eyebrow">RRHH / Administración funcional</p><h1>Administración del ciclo</h1><p class="lead">RRHH define el periodo, calendario, relaciones, recordatorios y da inicio formal al proceso.</p></div><span id="campaignStatus" class="status-pill neutral">Borrador</span></div>
+        <div class="admin-tabs">
+          <button class="tab active" data-admin-tab="cycleSettings">Ciclo y calendario</button>
+          <button class="tab" data-admin-tab="matrix">Matriz de evaluaciones</button>
+          <button class="tab" data-admin-tab="tracking">Seguimiento</button>
+          <button class="tab post-pilot-tab" data-admin-tab="exceptions">Excepciones</button>
+          <button class="tab" data-admin-tab="instruments">Instrumentos y preguntas</button>
+          <button class="tab" data-admin-tab="weights">Ponderaciones generales</button>
+        </div>
+        <div id="cycleSettings" class="admin-pane active panel">
+          <div class="panel-heading"><div><h2>Configuración del ciclo</h2><p>RRHH controla fechas de hitos, comunicaciones iniciales y recordatorios desde un único lugar.</p></div><button id="startCampaign" class="btn primary">Iniciar ciclo</button></div>
+          <div class="settings-grid three-col">
+            <label>Nombre del ciclo<input id="cycleName" class="control" value="Gestión del Desempeño 2027-2028"/></label>
+            <label>Tipo de ciclo<select id="adminCycleType" class="control"><option value="annual">Anual</option><option value="pilot">Piloto</option></select></label>
+            <label>Estado<select class="control"><option>Borrador</option><option>Activo</option><option>Cerrado</option></select></label>
+          </div>
+          <h3 class="section-title">Hitos, comunicaciones y recordatorios</h3>
+          <p class="section-helper">Para cada hito RRHH define cuándo inicia, cuándo se comunica y con qué anticipación se recuerda a las personas que aún tengan actividades pendientes.</p>
+          <div class="panel table-panel nested-panel"><table><thead><tr><th>Hito</th><th>Fecha / mes</th><th>Comunicación inicial</th><th>Recordatorio</th><th>Responsable</th></tr></thead><tbody id="scheduleRows"></tbody></table></div>
+          <div class="notification-explainer-grid">
+            <article><span class="step-number">1</span><div><strong>Inicio del hito</strong><p>Se informa a las personas responsables qué actividad se habilitó y hasta cuándo pueden completarla.</p></div></article>
+            <article><span class="step-number">2</span><div><strong>Seguimiento de pendientes</strong><p>La plataforma identifica actividades incompletas y genera los recordatorios definidos por RRHH.</p></div></article>
+            <article><span class="step-number">3</span><div><strong>Próximo vencimiento</strong><p>Se envía un recordatorio final según la anticipación configurada en el calendario.</p></div></article>
+          </div>
+          <div class="info-callout"><strong>Al iniciar el ciclo:</strong> la plataforma activa las etapas y comunicaciones configuradas. No existe un módulo separado de notificaciones; la lógica forma parte del calendario del ciclo.</div>
+        </div>
+        <div id="matrix" class="admin-pane panel table-panel">
+          <div class="panel-heading"><div><h2>Matriz definitiva de evaluaciones</h2><p>La población administrativa y las relaciones jefe → supervisado se leen desde la estructura de Nómina GP. Los decanos no forman parte de la población evaluada, pero sí aparecen como evaluadores de su equipo administrativo y no realizan autoevaluación.</p></div><div class="panel-actions"><button class="btn secondary" id="downloadMatrix">Descargar matriz</button><button class="btn secondary" id="validateMatrix">Validar matriz</button></div></div>
+          <div class="matrix-toolbar"><label>Buscar persona<input id="matrixPersonFilter" class="control" placeholder="Nombre o cargo"></label><label>Jefe / evaluador<select id="matrixManagerFilter" class="control"><option value="all">Todos</option></select></label><button id="clearMatrixFilters" class="btn ghost">Limpiar filtros</button></div>
+          <div class="info-callout"><strong>Regla de población:</strong> el sistema toma de Nómina GP las personas cuya estructura/designación corresponde a personal administrativo. Los decanos se incorporan únicamente como evaluadores cuando tienen equipo administrativo a cargo.</div>
+          <div class="info-callout"><strong>Evaluación de servicio:</strong> RRHH puede activar o desactivar la aplicabilidad por persona. Cuando aplica, la calificación de servicio se consume como dato de solo lectura desde la fuente institucional definida para este resultado.</div>
+          <table><thead><tr><th>Evaluado</th><th>Jefe evaluador</th><th>Autoevaluación</th><th>Evalúa a su jefe</th><th>Subordinados</th><th>Evaluación de servicio</th><th>Escenario de ponderación</th><th>Validación</th></tr></thead><tbody id="matrixRows"></tbody></table>
+        </div>
+        <div id="tracking" class="admin-pane panel table-panel">
+          <div class="panel-heading"><div><h2>Seguimiento del proceso</h2><p>RRHH consulta en qué etapa se encuentra cada persona y puede filtrar el listado para dar seguimiento a actividades pendientes.</p></div><button class="btn secondary" id="downloadTracking">Descargar reporte</button></div>
+          <div class="matrix-toolbar tracking-toolbar"><label>Buscar persona<input id="trackingPersonFilter" class="control" placeholder="Nombre o cargo"></label><label>Estado<select id="trackingStatusFilter" class="control"><option value="all">Todos</option><option>No iniciado</option><option>En proceso</option><option>Listo para evaluar</option><option>Completado</option></select></label><label>Etapa<select id="trackingStageFilter" class="control"><option value="all">Todas</option><option>Sesión de inicio</option><option>Reunión de feedback 1</option><option>Evaluación 1</option><option>Reunión de feedback 2</option><option>Evaluación 2</option></select></label><button id="clearTrackingFilters" class="btn ghost">Limpiar filtros</button></div>
+          <table><thead><tr><th>Persona</th><th>Jefe / evaluador</th><th>Etapa actual</th><th>Estado</th><th>E1</th><th>E2</th><th>Resultado final</th></tr></thead><tbody id="trackingRows"></tbody></table>
+        </div>
+        <div id="exceptions" class="admin-pane panel table-panel post-pilot-pane">
+          <div class="panel-heading"><div><h2>Excepciones de estructura · Post-piloto</h2><p>Funcionalidad prevista para una evolución posterior; no se habilita durante el ciclo piloto para agilizar el lanzamiento.</p></div><button class="btn primary" id="addExceptionBtn">+ Nueva excepción</button></div>
+          <table><thead><tr><th>Persona</th><th>Relación oficial</th><th>Relación para evaluación</th><th>Motivo</th><th>Vigencia</th><th></th></tr></thead><tbody id="exceptionRows"><tr><td>Valeria Ruiz</td><td>Jorge Lara</td><td>María Andrade</td><td>Asignación temporal de proyecto</td><td>S1 2027</td><td><button class="link-btn">Editar</button></td></tr></tbody></table>
+        </div>
+        <div id="instruments" class="admin-pane panel">
+          <div class="panel-heading"><div><h2>Instrumentos y preguntas</h2><p>RRHH puede administrar el contenido, formato, evidencia y peso de cada pregunta por tipo de evaluación.</p></div><button class="btn primary" id="addQuestionBtn">+ Agregar pregunta</button></div>
+          <div class="instrument-toolbar">
+            <label>Tipo de evaluación<select id="questionTypeSelect" class="control"><option value="manager">Jefe → supervisado</option><option value="upward">Supervisado → jefe</option><option value="self">Autoevaluación</option></select></label>
+            <div id="questionWeightValidation" class="weight-summary"></div>
+          </div>
+          <div class="info-callout caution"><strong>Pesos por pregunta:</strong> el prototipo permite configurarlos y recalcula resultados en tiempo real. Los pesos vigentes de la hoja “Detalle por pregunta” de RRHH ya están cargados como configuración base del prototipo. Cualquier cambio realizado aquí recalcula también el aporte final de cada pregunta.</div>
+          <div class="table-panel"><table><thead><tr><th>#</th><th>Dimensión / título</th><th>Pregunta</th><th>Formato</th><th>Evidencia</th><th>Peso dentro de su evaluación</th><th>Aporte final sin servicio</th><th>Aporte final con servicio</th><th></th></tr></thead><tbody id="questionAdminRows"></tbody></table></div>
+        </div>
+        <div id="weights" class="admin-pane panel">
+          <div class="panel-heading"><div><h2>Ponderaciones generales</h2><p>RRHH configura una única matriz por escenario. El sistema aplica automáticamente el escenario correcto a cada persona.</p></div></div>
+          <div class="info-callout"><strong>Selección automática del escenario:</strong> la existencia de subordinados se determina desde la estructura de Nómina GP. Durante el piloto no se aplican excepciones de estructura; la evaluación de servicio se determina con el check administrado por RRHH.</div>
+          <div id="weightScenarioTable"></div>
+          <div class="info-callout caution"><strong>Escenarios sin subordinados:</strong> RRHH configura únicamente los componentes que aplican a cada escenario. El sistema exige que la suma sea 100% antes de permitir su publicación para el ciclo.</div>
+        </div>
+      </section>
+
+
+      <section id="processGuide" class="page">
+        <div id="processGuideContent"></div>
+      </section>
+
+      <section id="committee" class="page">
+        <div id="committeeDashboard"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="institutional-footer"><div class="footer-mark"><span class="footer-usfq">USFQ</span><span class="footer-rule"></span><span>TECNOLOGÍAS<br>DE LA INFORMACIÓN</span></div></footer>
+
+  <div id="modal" class="modal" aria-hidden="true"><div class="modal-card"><div class="modal-header"><h2 id="modalTitle">Registrar</h2><button id="closeModal" class="icon-btn">×</button></div><div id="modalBody"></div></div></div>
+  <div id="toast" class="toast">Cambios guardados</div>
+  <script src="app.js"></script>
+</body>
+</html>
